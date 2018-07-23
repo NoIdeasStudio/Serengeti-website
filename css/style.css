@@ -1,6 +1,72 @@
 *,
-*:after, 
+*:after,
 *:before {
-	margin: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.videoCont {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.scrubBar {
+    position: fixed;
+    top: 0;
+    left: 30px;
+    height: 100%;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 100;
+}
+
+.scrubBar:hover {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+}
+
+.scrubBar:active {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+.scrubBarLine {
+    height: 100%;
+    width: 3px;
+    background-color: black;
 }
