@@ -7,6 +7,10 @@ var curVideoSpeed = 0;
 var targScrubPerc = 0;
 var scrubPerc = 0;
 
+var beingMoved = false;
+
+var curTween;
+
 function getVideoType(src) {
     var tokens = src.split(".");
     var ext = tokens[tokens.length-1];
@@ -14,28 +18,27 @@ function getVideoType(src) {
 }
 
 var videoUpdateIntervals;
-var playbackHandlerInterval;
 
 function moveScrubBar() {
-    scrubBarElement.style.left = (targScrubPerc*window.innerWidth - (scrubBarElement.clientWidth/2)) + "px";
+    if (!beingMoved) {
+        var curTimePerc = videoElement.currentTime / videoElement.duration;
+        scrubBarElement.style.left = (curTimePerc*window.innerWidth - (scrubBarElement.clientWidth/2)) + "px";
+    }
+    else {
+        scrubBarElement.style.left = (targScrubPerc*window.innerWidth - (scrubBarElement.clientWidth/2)) + "px";
+    }
 }
 
-function updateScrubFromPlayback() {
-    console.log(videoElement.currentTime);
-    targScrubPerc = videoElement.currentTime/videoElement.duration;
-    scrubPerc = targScrubPerc;
-    moveScrubBar();
-}
-
-function updateVideoSpeed() {
-    videoElement.currentTime = videoElement.duration * scrubPerc;
-}
+var beingMovedTimeout;
 
 function createVideo(srcArray) {
     var video = document.createElement("video");
     video.autoplay = true;
     video.controls = false;
     video.muted = true;
+    video.autobuffer = true;
+    video.loop = true;
+    video.preservepitch = true;
     for (var i = 0; i < srcArray.length; i++) {
         var srcElement = document.createElement("source");
 
@@ -56,13 +59,30 @@ function handleMouseMove(ev) {
     var curX = ev.clientX;
     targScrubPerc = curX / window.innerWidth;
     // scrubPerc = targScrubPerc;
-    moveScrubBar();
+    beingMoved = true;
+    if (curTween) {
+        curTween.duration(Math.abs(targScrubPerc - scrubPerc) + 0.5);
+        curTween.updateTo(
+            {
+                currentTime: (videoElement.duration * targScrubPerc),
+            },
+            true
+        );
+    }
+    else {
+        curTween = TweenMax.to(videoElement, Math.abs(targScrubPerc - scrubPerc) + 0.5, {
+            currentTime: (videoElement.duration * targScrubPerc),
+            // immdiateRender: true,
+            overwrite: "all",
+            ease: Elastic.easeInOut,
+            onComplete: doneSeeking
+        });
+    }
 }
 
 function handleMouseDown(ev) {
-    clearInterval(playbackHandlerInterval);
+    videoElement.muted = false;
     window.addEventListener("mousemove",handleMouseMove);
-    updateVideoSpeed = setInterval(updateVideoSpeed, 10);
 }
 
 function handleMouseUp(ev) {
@@ -70,10 +90,8 @@ function handleMouseUp(ev) {
 }
 
 function doneSeeking() {
-    clearInterval(videoUpdateIntervals);
-    playbackHandlerInterval = setInterval(updateScrubFromPlayback, 10);
+    beingMoved = false;
 }
-
 
 function initScrubBar() {
     scrubBarElement = document.getElementById('scrubBar');
@@ -86,5 +104,6 @@ function initVideo(containerElement,srcArray) {
     videoElement = createVideo(srcArray);
     containerElement.appendChild(videoElement);
     initScrubBar();
-    playbackHandlerInterval = setInterval(updateScrubFromPlayback, 10);
+
+    barUpdateInterval = setInterval(moveScrubBar, 10);
 }
