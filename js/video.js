@@ -36,7 +36,7 @@ function createVideo(srcArray) {
     video.autoplay = true;
     video.controls = false;
     video.muted = true;
-    video.autobuffer = true;
+    video.preload = "auto";
     video.loop = true;
     video.preservepitch = true;
     for (var i = 0; i < srcArray.length; i++) {
@@ -72,9 +72,9 @@ function handleMouseMove(ev) {
     else {
         curTween = TweenMax.to(videoElement, Math.abs(targScrubPerc - scrubPerc) + 0.5, {
             currentTime: (videoElement.duration * targScrubPerc),
-            // immdiateRender: true,
+            immediateRender: true,
             overwrite: "all",
-            ease: Elastic.easeInOut,
+            ease: Quad.easeInOut,
             onComplete: doneSeeking
         });
     }
@@ -97,7 +97,7 @@ function initScrubBar() {
     scrubBarElement = document.getElementById('scrubBar');
 
     scrubBarElement.addEventListener("mousedown",handleMouseDown);
-    scrubBarElement.addEventListener("mouseup",handleMouseUp);
+    window.addEventListener("mouseup",handleMouseUp);
 }
 
 function initVideo(containerElement,srcArray) {
