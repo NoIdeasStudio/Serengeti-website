@@ -72,7 +72,7 @@ function handleMouseMove(ev) {
     else {
         curTween = TweenMax.to(videoElement, Math.abs(targScrubPerc - scrubPerc) + 0.5, {
             currentTime: (videoElement.duration * targScrubPerc),
-            immediateRender: true,
+            // immediateRender: true,
             overwrite: "all",
             ease: Quad.easeInOut,
             onComplete: doneSeeking
@@ -81,7 +81,6 @@ function handleMouseMove(ev) {
 }
 
 function handleMouseDown(ev) {
-    videoElement.muted = false;
     window.addEventListener("mousemove",handleMouseMove);
 }
 
@@ -100,10 +99,38 @@ function initScrubBar() {
     window.addEventListener("mouseup",handleMouseUp);
 }
 
+
+
+
+var audioContext;
+
+
+
+
+function initAudio() {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    var buff = new Buffer(audioContext,["./audio/vid.ogg"]);
+    buff.loadAll();
+
+    var snd = new Sound(audioContext,buff.getSoundByIndex(0));
+    snd.play();
+}
+
+
+
+
+
+
+
+
+
+
+
 function initVideo(containerElement,srcArray) {
     videoElement = createVideo(srcArray);
     containerElement.appendChild(videoElement);
     initScrubBar();
+    initAudio();
 
     barUpdateInterval = setInterval(moveScrubBar, 10);
 }
