@@ -1,0 +1,284 @@
+
+@font-face {
+    font-family:"Courier-New";
+    src:url("../fonts/Courier-New.woff2") format("woff2"),url("../fonts/Courier-New.woff") format("woff"),url("../fonts/Courier-New.otf") format("opentype");
+    font-style:normal;font-weight:400;
+}
+
+
+@font-face {
+    font-family:"Brian-Strait";
+    src:url("../fonts/Brian-Strait.woff2") format("woff2"),url("../fonts/Brian-Strait.woff") format("woff"),url("../fonts/Brian-Strait.otf") format("opentype");
+    font-style:normal;font-weight:400;
+}
+
+
+@font-face {
+    font-family:"dennis6e";
+    src:url("../fonts/dennis6e.woff2") format("woff2"),url("../fonts/dennis6e.woff") format("woff"),url("../fonts/dennis6e.otf") format("opentype");
+    font-style:normal;font-weight:400;
+}
+
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 1;
+}
+
+
+/*  TEXT STYLES */
+
+h1 {
+    font: normal 12vw/1 'Brian-Strait';
+}
+
+h2 {
+    font: normal 8vw/1 'Brian-Strait';
+    transform: rotate(-6deg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    font: normal 2.5vw/1.5 'Courier-New', courier, mono;
+}
+
+/*  PAGE STYLES */
+
+section {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 0.5s;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+
+    /* following looks cool but is slow */
+    /* need to add filter to transition for it to work */
+    /* -webkit-filter: blur(0); */
+    /* filter: blur(0); */
+}
+
+section.hidden {
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+
+    /* following looks cool but is slow */
+    /* need to add filter to transition for it to work */
+    /* -webkit-filter: blur(10px); */
+    /* filter: blur(10px); */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 2%;
+    z-index: 2;
+}
+
+#six {
+    font: normal 5vw/1 'dennis6e';
+    vertical-align: middle;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    z-index: 2;
+}
+
+.song-title {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8%;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.option span {
+  position: relative;
+  display: inline-block;
+}
+
+.option span::after,
+.option span::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 63%;
+  margin-top: -2px;
+  background: #000;
+}
+
+.option span::before {
+  left: -2.5px;
+}
+
+.option span::after {
+  right: 2.5px;
+  background: #000;
+}
+
+.option:hover span:before {
+  background: #000;
+  width: 100%;
+}
+
+.option:hover span:after {
+  background: transparent;
+  width: 100%;
+}
+
+#p-hover.option span::after,
+#p-hover.option span::before {
+  top: 50%;
+}
+
+.tourCont {
+    padding-top: 8%;
+}
+
+.tour {
+    padding: 2.5%;
+}
+
+.row-item {
+    display: grid;
+    grid-template-columns: 15% 36% 36% 13%;
+}
+
+#right-align {
+    text-align: right;
+}
+
+@media only screen and (max-width : 600px) {
+
+    h1 {
+        font-size: 18vw;
+    }
+
+    h2 {
+        font-size: 18vw;
+        text-align: center;
+    }
+
+    #six {
+        font-size: 11vw;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 2% 2% 8% 2%;
+    }
+
+    .song-title {
+        padding-bottom: 30%
+    }
+
+    #listen-popover {
+        order: -1;
+    }
+
+}
+
+.navButton:hover {
+    cursor: pointer;
+}
+
+
+/************************** VIDEO STUFF ***************************************/
+
+.videoCont {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+video {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: -1;
+}
+
+.scrubBar {
+    position: fixed;
+    top: 0;
+    left: 30px;
+    height: 100%;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 100;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.scrubBar:hover {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+}
+
+.scrubBar:active {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+.scrubBarLine {
+    height: 100%;
+    width: 2px;
+    background-color: black;
+}
