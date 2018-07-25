@@ -68,11 +68,8 @@ function createVideo(srcArray) {
     return video;
 }
 
-function handleMouseMove(ev) {
-    clearInterval(barUpdateInterval);
-    var curX = ev.clientX;
-
-    targScrubPerc = curX / window.innerWidth;
+function scrubHandler(perc) {
+    targScrubPerc = perc;
 
     scrubAmt = targScrubPerc - scrubPerc;
     scrubDir = scrubAmt/Math.abs(scrubAmt);
@@ -123,13 +120,37 @@ function handleMouseMove(ev) {
     }
 }
 
+function handleMouseMove(ev) {
+    clearInterval(barUpdateInterval);
+    var curX = ev.clientX;
+
+    scrubHandler(curX / window.innerWidth);
+}
+
+function handleTouchMove(ev) {
+    // stop touch event
+    ev.stopPropagation();
+    ev.preventDefault();
+
+    // translate to mouse event
+    var mEv = document.createEvent('MouseEvent');
+    mEv.initMouseEvent('mousemove', true, true, window, ev.detail,
+                 ev.touches[0].screenX, ev.touches[0].screenY,
+                 ev.touches[0].clientX, ev.touches[0].clientY,
+                 false, false, false, false,
+                 0, null);
+    handleMouseMove(mEv);
+}
+
 function handleMouseDown(ev) {
     videoElement.pause();
-    videoElement.muted = true;
+    // videoElement.muted = true;
+    window.addEventListener("touchmove",handleTouchMove,false);
     window.addEventListener("mousemove",handleMouseMove);
 }
 
 function handleMouseUp(ev) {
+    window.removeEventListener("touchmove",handleTouchMove,false);
     window.removeEventListener("mousemove",handleMouseMove);
 }
 
@@ -155,6 +176,9 @@ function initScrubBar() {
 
     scrubBarElement.addEventListener("mousedown",handleMouseDown);
     window.addEventListener("mouseup",handleMouseUp);
+
+    scrubBarElement.addEventListener("touchstart",handleMouseDown);
+    window.addEventListener("touchend",handleMouseUp);
 }
 
 function loadScrubAudio() {
@@ -179,9 +203,11 @@ function handleTogglePlayback(ev) {
     if (target) return;
     target = getParentByClassName(ev.target,"option");
     if (target) return;
-
-    if (isVideoPlaying()) videoElement.pause();
-    else videoElement.play();
+    videoElement.muted = !videoElement.muted;
+    // if (isVideoPlaying()) videoElement.pause();
+    // else {
+    //     videoElement.play();
+    // }
 }
 
 function initVideo(containerElement,srcArray) {
