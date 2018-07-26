@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
         <script src="./js/howler.js" charset="utf-8"></script>
+        <script src="./js/Detector.js" charset="utf-8"></script>
         <script src="./js/three.min.js" charset="utf-8"></script>
         <script src="./js/video.js" charset="utf-8"></script>
         <script src="./js/pages.js" charset="utf-8"></script>
@@ -105,7 +106,7 @@
             uniform float u_time;
             uniform sampler2D u_texture;
             uniform vec2 u_vid_dims;
-            uniform int u_donoise;
+            uniform float u_donoise;
 
             varying vec2 vUv;
 
@@ -253,12 +254,12 @@
                 /// Noise stuff here
                 ////////////////////////////////////////////////////////////////
 
-                if (u_donoise == 1) {
+                if (u_donoise > 0.) {
                     if (vPos.y > 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))))
-                        vPos.y += snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.;
+                        vPos.y += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.;
 
                     if (vPos.y > 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))))
-                        vPos.x += snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/50.;
+                        vPos.x += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/50.;
                 }
 
                 ////////////////////////////////////////////////////////////////

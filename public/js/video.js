@@ -8,6 +8,8 @@ const RW_AUDIO_PATHS = ["./audio/rw.mp3"];
 const FF_CODE        = "ff";
 const RW_CODE        = "rw";
 
+var hasWebGL;
+
 var videoElement;
 var scrubBarElement;
 
@@ -72,54 +74,63 @@ function createVideo(srcArray) {
     video.appendChild(nsElement);
     video.load();
 
-    // begin three.js stuff for glitch effect
-    container = document.getElementById( "videoCont" );
+    if (hasWebGL) {
+        // begin three.js stuff for glitch effect
+        container = document.getElementById( "videoCont" );
 
-    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-    camera.position.z = 1;
+        camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+        camera.position.z = 1;
 
-    scene = new THREE.Scene();
+        scene = new THREE.Scene();
 
-    var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+        var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
 
-    videoTexture = new THREE.Texture( video );
-    videoTexture.minFilter = THREE.LinearFilter;
-    videoTexture.repeat.set( 2, 2 );
-    videoTexture.wrapS = THREE.ClampToEdgeWrapping;
-    videoTexture.wrapT = THREE.ClampToEdgeWrapping;
+        videoTexture = new THREE.Texture( video );
+        videoTexture.minFilter = THREE.LinearFilter;
+        videoTexture.repeat.set( 2, 2 );
+        videoTexture.wrapS = THREE.ClampToEdgeWrapping;
+        videoTexture.wrapT = THREE.ClampToEdgeWrapping;
 
-    uniforms = {
-        u_time: { type: "f", value: 1.0 },
-        u_resolution: { type: "v2", value: new THREE.Vector2() },
-        u_mouse: { type: "v2", value: new THREE.Vector2() },
-        u_vid_dims: { type: "v2", value: new THREE.Vector2(video.videoWidth,video.videoHeight) },
-        u_texture: { type: "t", value: videoTexture },
-        u_donoise: { type: "i", value: 0 }
-    };
+        uniforms = {
+            u_time: { type: "f", value: 1.0 },
+            u_resolution: { type: "v2", value: new THREE.Vector2() },
+            u_mouse: { type: "v2", value: new THREE.Vector2() },
+            u_vid_dims: { type: "v2", value: new THREE.Vector2(video.videoWidth,video.videoHeight) },
+            u_texture: { type: "t", value: videoTexture },
+            u_donoise: { type: "f", value: 0.0 }
+        };
 
-    var material = new THREE.ShaderMaterial( {
-        uniforms: uniforms,
-        vertexShader: document.getElementById( "vertexShader" ).textContent,
-        fragmentShader: document.getElementById( "fragmentShader" ).textContent
-    } );
+        var material = new THREE.ShaderMaterial( {
+            uniforms: uniforms,
+            vertexShader: document.getElementById( "vertexShader" ).textContent,
+            fragmentShader: document.getElementById( "fragmentShader" ).textContent
+        } );
 
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh );
+        mesh = new THREE.Mesh( geometry, material );
+        scene.add( mesh );
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setPixelRatio( window.devicePixelRatio );
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
 
-    container.appendChild( renderer.domElement );
+        container.appendChild( renderer.domElement );
 
-    onWindowResize();
-    window.addEventListener( "resize", onWindowResize, false );
+        onWindowResize();
+        window.addEventListener( "resize", onWindowResize, false );
 
-    document.onmousemove = function(e){
-        uniforms.u_mouse.value.x = e.pageX
-        uniforms.u_mouse.value.y = e.pageY
+        document.onmousemove = function(e){
+            uniforms.u_mouse.value.x = e.pageX
+            uniforms.u_mouse.value.y = e.pageY
+        }
+
+        videoElement = video;
+        videoElement.play();
+        animate();
+    } else {
+        videoElement = video;
+        document.getElementById("videoCont").appendChild(videoElement)
+        videoElement.play();
     }
-    videoElement = video;
-    videoElement.play();
+
 }
 
 function onWindowResize( event ) {
@@ -175,7 +186,7 @@ function scrubHandler(perc) {
         curScrubSound = RW_CODE;
     }
 
-    uniforms.u_donoise.value = 1;
+    if (hasWebGL) uniforms.u_donoise.value = Math.abs(scrubAmt) * 10;
 
     beingMoved = true;
     if (curTween) {
@@ -194,14 +205,12 @@ function scrubHandler(perc) {
             onComplete: doneSeeking,
             onUpdate: function () {
                 scrubPerc = videoElement.currentTime/videoElement.duration;
-                moveScrubBar();
             }
         });
     }
 }
 
 function handleMouseMove(ev) {
-    clearInterval(barUpdateInterval);
     var curX = ev.clientX;
 
     scrubHandler(curX / window.innerWidth);
@@ -223,8 +232,6 @@ function handleTouchMove(ev) {
 }
 
 function handleMouseDown(ev) {
-    videoElement.pause();
-    // videoElement.muted = true;
     window.addEventListener("touchmove",handleTouchMove,false);
     window.addEventListener("mousemove",handleMouseMove);
 }
@@ -239,8 +246,7 @@ var stopScrubSampleTimeout;
 function doneSeeking() {
     beingMoved = false;
     videoElement.muted = false;
-    barUpdateInterval = setInterval(moveScrubBar, 10);
-    uniforms.u_donoise.value = 0;
+    if (hasWebGL) uniforms.u_donoise.value = 0;
     if (curScrubSound == FF_CODE) {
         ffSound.stop();
         curScrubSound = false;
@@ -249,7 +255,6 @@ function doneSeeking() {
         rwSound.stop();
         curScrubSound = false;
     }
-    videoElement.play();
 }
 
 function initScrubBar() {
@@ -292,9 +297,9 @@ function handleTogglePlayback(ev) {
 }
 
 function initVideo(srcArray) {
+    hasWebGL = Detector.webgl;
     loadScrubAudio();
     createVideo(srcArray);
-    animate();
     initScrubBar();
 
     window.addEventListener("click",handleTogglePlayback);
