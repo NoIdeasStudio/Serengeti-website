@@ -145,6 +145,7 @@ function render() {
 }
 
 function scrubHandler(perc) {
+    videoElement.pause();
     targScrubPerc = perc;
 
     scrubAmt = targScrubPerc - scrubPerc;
@@ -194,14 +195,12 @@ function scrubHandler(perc) {
             onComplete: doneSeeking,
             onUpdate: function () {
                 scrubPerc = videoElement.currentTime/videoElement.duration;
-                moveScrubBar();
             }
         });
     }
 }
 
 function handleMouseMove(ev) {
-    clearInterval(barUpdateInterval);
     var curX = ev.clientX;
 
     scrubHandler(curX / window.innerWidth);
@@ -223,8 +222,6 @@ function handleTouchMove(ev) {
 }
 
 function handleMouseDown(ev) {
-    videoElement.pause();
-    // videoElement.muted = true;
     window.addEventListener("touchmove",handleTouchMove,false);
     window.addEventListener("mousemove",handleMouseMove);
 }
@@ -239,7 +236,6 @@ var stopScrubSampleTimeout;
 function doneSeeking() {
     beingMoved = false;
     videoElement.muted = false;
-    barUpdateInterval = setInterval(moveScrubBar, 10);
     uniforms.u_donoise.value = 0;
     if (curScrubSound == FF_CODE) {
         ffSound.stop();
