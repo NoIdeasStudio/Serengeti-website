@@ -194,6 +194,41 @@ nav {
     text-align: right;
 }
 
+section#about_sec {
+    padding-left: 13%; 
+    padding-right: 13%;
+    overflow-y: scroll;
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10%;
+}
+
+.intro p {
+    text-align: center;
+}
+
+.about p {
+    line-height: 1.2;
+}
+
+.footnote-right {
+    font: normal 3.5vw/0.5 'Brian-Strait';
+    right: 0;
+    position: absolute;
+    width: 13%;
+    transform: rotate(-6deg);
+}
+
+.footnote-right a:hover {
+    border-bottom: 1px solid #000;
+}
+
+
 @media only screen and (max-width : 600px) {
 
     h1 {
@@ -257,7 +292,7 @@ video {
     top: 0;
     left: 30px;
     height: 100%;
-    width: 20px;
+    width: 60px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -282,3 +317,7 @@ video {
     width: 2px;
     background-color: black;
 }
+
+
+
+
