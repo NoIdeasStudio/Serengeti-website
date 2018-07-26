@@ -253,7 +253,7 @@
                 /// Noise stuff here
                 ////////////////////////////////////////////////////////////////
 
-                if (u_donoise == 0) {
+                if (u_donoise == 1) {
                     if (vPos.y > 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))))
                         vPos.y += snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.;
 
