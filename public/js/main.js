@@ -15,7 +15,7 @@ function getParentByClassName(el,pClass) {
 }
 
 function init() {
-    initVideo(document.getElementById("videoCont"),["./video/not_supposed.webm","./video/not_supposed.ogv","./video/not_supposed.mp4"]);
+    initVideo(["./video/not_supposed.webm","./video/not_supposed.ogv","./video/not_supposed.mp4"]);
     initPages();
 }
 

@@ -23,6 +23,10 @@ var ffSound;
 var rwSound;
 var curScrubSound;
 
+var container;
+var camera, scene, renderer, videoTexture, mesh;
+var uniforms;
+
 function getVideoType(src) {
     var tokens = src.split(".");
     var ext = tokens[tokens.length-1];
@@ -46,12 +50,14 @@ var beingMovedTimeout;
 
 function createVideo(srcArray) {
     var video = document.createElement("video");
+
     video.autoplay = true;
     video.controls = false;
     video.muted = true;
     video.preload = "auto";
     video.loop = true;
     video.preservepitch = true;
+
     for (var i = 0; i < srcArray.length; i++) {
         var srcElement = document.createElement("source");
 
@@ -60,12 +66,82 @@ function createVideo(srcArray) {
         video.appendChild(srcElement);
     }
 
-    // add not supported warning
+    // add "not supported" warning
     var nsElement = document.createElement("p");
     nsElement.innerHTML = "Your browser does not support HTML5 video.";
     video.appendChild(nsElement);
     video.load();
-    return video;
+
+    // begin three.js stuff for glitch effect
+    container = document.getElementById( "videoCont" );
+
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+    camera.position.z = 1;
+
+    scene = new THREE.Scene();
+
+    var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+
+    videoTexture = new THREE.Texture( video );
+    videoTexture.minFilter = THREE.LinearFilter;
+    videoTexture.repeat.set( 2, 2 );
+    videoTexture.wrapS = THREE.ClampToEdgeWrapping;
+    videoTexture.wrapT = THREE.ClampToEdgeWrapping;
+
+    uniforms = {
+        u_time: { type: "f", value: 1.0 },
+        u_resolution: { type: "v2", value: new THREE.Vector2() },
+        u_mouse: { type: "v2", value: new THREE.Vector2() },
+        u_vid_dims: { type: "v2", value: new THREE.Vector2(video.videoWidth,video.videoHeight) },
+        u_texture: { type: "t", value: videoTexture },
+        u_donoise: { type: "i", value: 0 }
+    };
+
+    var material = new THREE.ShaderMaterial( {
+        uniforms: uniforms,
+        vertexShader: document.getElementById( "vertexShader" ).textContent,
+        fragmentShader: document.getElementById( "fragmentShader" ).textContent
+    } );
+
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio( window.devicePixelRatio );
+
+    container.appendChild( renderer.domElement );
+
+    onWindowResize();
+    window.addEventListener( "resize", onWindowResize, false );
+
+    document.onmousemove = function(e){
+        uniforms.u_mouse.value.x = e.pageX
+        uniforms.u_mouse.value.y = e.pageY
+    }
+    videoElement = video;
+    videoElement.play();
+}
+
+function onWindowResize( event ) {
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    uniforms.u_resolution.value.x = window.innerWidth;
+    uniforms.u_resolution.value.y = window.innerHeight;
+}
+
+function animate() {
+    requestAnimationFrame( animate );
+    render();
+}
+
+function render() {
+    uniforms.u_time.value += 0.05;
+    if ( videoElement.readyState === videoElement.HAVE_ENOUGH_DATA ) {
+        videoTexture.needsUpdate = true;
+        uniforms.u_vid_dims.value.x = videoElement.videoWidth;
+        uniforms.u_vid_dims.value.y = videoElement.videoHeight;
+    }
+
+    renderer.render( scene, camera );
 }
 
 function scrubHandler(perc) {
@@ -83,6 +159,7 @@ function scrubHandler(perc) {
             ffSound.play();
             curScrubSound = FF_CODE;
         }
+        ffSound.rate = (Math.abs(scrubAmt) * 200).toFixed(0);
         curScrubSound = FF_CODE;
     }
     else if (scrubDir < 0) {                                                    // rewind
@@ -94,8 +171,11 @@ function scrubHandler(perc) {
             rwSound.play();
             curScrubSound = RW_CODE;
         }
+        rwSound.rate = (Math.abs(scrubAmt) * 200).toFixed(0);
         curScrubSound = RW_CODE;
     }
+
+    uniforms.u_donoise.value = 1;
 
     beingMoved = true;
     if (curTween) {
@@ -160,6 +240,7 @@ function doneSeeking() {
     beingMoved = false;
     videoElement.muted = false;
     barUpdateInterval = setInterval(moveScrubBar, 10);
+    uniforms.u_donoise.value = 0;
     if (curScrubSound == FF_CODE) {
         ffSound.stop();
         curScrubSound = false;
@@ -210,10 +291,10 @@ function handleTogglePlayback(ev) {
     // }
 }
 
-function initVideo(containerElement,srcArray) {
+function initVideo(srcArray) {
     loadScrubAudio();
-    videoElement = createVideo(srcArray);
-    containerElement.appendChild(videoElement);
+    createVideo(srcArray);
+    animate();
     initScrubBar();
 
     window.addEventListener("click",handleTogglePlayback);

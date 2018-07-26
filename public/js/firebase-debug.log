@@ -1,0 +1,32 @@
+[debug] [2018-07-25T16:23:34.338Z] ----------------------------------------------------------------------
+[debug] [2018-07-25T16:23:34.341Z] Command:       /Users/samkilgus/.nvm/versions/node/v10.6.0/bin/node /Users/samkilgus/.nvm/versions/node/v10.6.0/bin/firebase serve
+[debug] [2018-07-25T16:23:34.341Z] CLI Version:   4.0.0
+[debug] [2018-07-25T16:23:34.341Z] Platform:      darwin
+[debug] [2018-07-25T16:23:34.341Z] Node Version:  v10.6.0
+[debug] [2018-07-25T16:23:34.342Z] Time:          Wed Jul 25 2018 12:23:34 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-07-25T16:23:34.343Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-25T16:23:34.354Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-25T16:23:34.354Z] > authorizing via signed-in user
+[debug] [2018-07-25T16:23:34.357Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/dennis6e-ff410  
+  
+ Wed Jul 25 2018 12:23:34 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-07-25T16:23:37.250Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-25T16:23:37.251Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/dennis6e-ff410/tokens  
+  
+ Wed Jul 25 2018 12:23:37 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-07-25T16:23:38.934Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-25T16:23:38.935Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/dennis6e-ff410  
+  
+ Wed Jul 25 2018 12:23:38 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-07-25T16:23:39.489Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/samkilgus/sync/freelance/noideas/Serengeti-website'...
+[info] 
+[debug] [2018-07-25T16:23:39.491Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/577698820912/clients/_:getWebAppConfig  
+  
+ Wed Jul 25 2018 12:23:39 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-07-25T16:23:39.928Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
