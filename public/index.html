@@ -255,10 +255,10 @@
                 ////////////////////////////////////////////////////////////////
 
                 if (u_donoise > 0.) {
-                    if (vPos.y > 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))))
+                    if (vPos.y > abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.))))/u_donoise)
                         vPos.y += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.;
 
-                    if (vPos.y > 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))))
+                    if (vPos.y > abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.))))/u_donoise)
                         vPos.x += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/50.;
                 }
 
