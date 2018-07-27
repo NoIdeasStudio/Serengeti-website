@@ -54,6 +54,7 @@ main {
 
 h1 {
     font: normal 12vw/1 'Brian-Strait';
+    -webkit-font-smoothing: antialiased;
 }
 
 h2 {
@@ -120,6 +121,11 @@ nav {
     justify-content: space-between;
     bottom: 0;
     z-index: 2;
+    align-items: flex-end;
+}
+
+nav h2 {
+    line-height: .8;
 }
 
 .song-title {
@@ -135,6 +141,53 @@ nav {
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+}
+
+/*.song-title h1 {
+    transition: all 5s ease;
+}
+
+.song-title h1:hover {
+    cursor: pointer;
+    transform: scale(1.1) rotate(-1deg);
+}*/
+
+h1 {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transform: rotate(-3deg);
+}
+
+h1:before, h1:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  top: 65%;
+  margin-top: -0.5px;
+  background: #000;
+}
+
+h1:before {
+  left: -2.5px;
+}
+h1:after {
+  right: 2.5px;
+  background: #000;
+/*  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+*/}
+
+h1:hover:before {
+  background: #000;
+  width: 100%;
+/*  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+*/}
+
+h1:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
 }
 
 .option span {
@@ -194,9 +247,15 @@ nav {
     text-align: right;
 }
 
+section#tour_sec {
+    overflow-y: scroll;
+    padding-bottom: 10%;
+}
+
 section#about_sec {
     padding-left: 13%; 
     padding-right: 13%;
+    padding-bottom: 10%;
     overflow-y: scroll;
 }
 
@@ -217,36 +276,105 @@ section#about_sec {
 }
 
 .footnote-right {
-    font: normal 3.5vw/0.5 'Brian-Strait';
+    font: normal 3.2vw/0.5 'Brian-Strait';
     right: 0;
     position: absolute;
-    width: 13%;
+    width: 14%;
     transform: rotate(-6deg);
+    padding: 1%;
+}
+
+#credit {
+    top: 0;
+    text-align: center;
 }
 
 .footnote-right a:hover {
     border-bottom: 1px solid #000;
 }
 
+#album-cover {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    text-align: center;
+    transition: visibility 0s, height 0s, opacity 0.3s ease;
+}
+
+#album-cover img {
+    width: 60%;
+    border: 2px solid transparent;
+}
+
+#album-cover img:hover {
+    border: 2px solid #000;
+}
+
+#album-popover:hover > #album-cover {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+#listen-options {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: visibility 0s, height 0s, opacity 0.3s ease;
+    text-align: center;
+}
+
+#listen-options h2 {
+    line-height: .6;
+}
+
+#listen-popover:hover > #listen-options {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
 
 @media only screen and (max-width : 600px) {
 
     h1 {
-        font-size: 18vw;
+        font-size: 24vw;
     }
 
     h2 {
         font-size: 18vw;
-        text-align: center;
+        text-align: center !important;
+    }
+
+    p {
+        font-size: 5vw;
     }
 
     #six {
         font-size: 11vw;
     }
 
+    h1:before, h1:after {
+        height: 2px;
+    }
+
     nav {
         flex-direction: column;
-        padding: 2% 2% 8% 2%;
+        padding: 6%;
+    }
+
+    .option span::after,
+    .option span::before {
+        height: 1px;
+    }
+
+    #listen-options h2 {
+        line-height: .75;
+    }
+
+    #album-cover {
+        display: none;
     }
 
     .song-title {
@@ -256,6 +384,46 @@ section#about_sec {
     #listen-popover {
         order: -1;
     }
+
+    section#tour_sec {
+        padding: 10% 0;
+    }
+
+    .tour {
+        padding-bottom: 60%;
+    }
+
+    .row-item {
+        display: block;
+        padding: 8% 0;
+        border-bottom: 1px solid #000;
+        text-align: left;
+    }
+
+    #right-align {
+        text-align: left;
+    }
+
+    #right-align a {
+        border-bottom: 1px solid #000;
+    }
+
+    section#about_sec {
+        padding-top: 30%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .intro {
+        height: auto;
+        padding-bottom: 30%;
+    }
+
+    .footnote-right,
+    .footnote-left {
+        display: none;
+    }
+
 
 }
 
@@ -316,6 +484,7 @@ video {
     height: 100%;
     width: 2px;
     background-color: black;
+    transition: all 0.2s ease;
 }
 
 

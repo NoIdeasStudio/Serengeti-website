@@ -83,7 +83,7 @@ function createVideo(srcArray) {
 
         scene = new THREE.Scene();
 
-        var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+        var geometry = new THREE.PlaneBufferGeometry( 3, 3 );
 
         videoTexture = new THREE.Texture( video );
         videoTexture.minFilter = THREE.LinearFilter;
@@ -186,7 +186,7 @@ function scrubHandler(perc) {
         curScrubSound = RW_CODE;
     }
 
-    if (hasWebGL) uniforms.u_donoise.value = Math.abs(scrubAmt) * 10;
+    if (hasWebGL) uniforms.u_donoise.value = Math.abs(scrubAmt) * 50;
 
     beingMoved = true;
     if (curTween) {
