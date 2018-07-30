@@ -293,6 +293,7 @@ section#about_sec {
 #audio {
     z-index: 999;
     padding: 3% 0;
+    right: 0;
     cursor: pointer;
 }
 
