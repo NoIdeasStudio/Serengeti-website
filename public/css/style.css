@@ -277,7 +277,7 @@ section#about_sec {
 
 .footnote-right {
     font: normal 3.2vw/0.5 'Brian-Strait';
-    right: 0;
+    right: 8px;
     position: absolute;
     width: 14%;
     transform: rotate(-6deg);
@@ -293,7 +293,6 @@ section#about_sec {
 #audio {
     z-index: 999;
     padding: 3% 0;
-    right: 0;
     cursor: pointer;
 }
 
@@ -432,6 +431,9 @@ section#about_sec {
         display: none;
     }
 
+    .scrubBar {
+        margin-left: 20%;
+    }
 
 }
 
