@@ -431,10 +431,6 @@ section#about_sec {
         display: none;
     }
 
-    .scrubBar {
-        margin-left: 20%;
-    }
-
 }
 
 .navButton:hover {
