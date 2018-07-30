@@ -240,7 +240,7 @@ h1:hover:after {
 
 .row-item {
     display: grid;
-    grid-template-columns: 15% 36% 36% 13%;
+    grid-template-columns: 15% 32% 40% 13%;
 }
 
 #right-align {
@@ -460,7 +460,7 @@ video {
     top: 0;
     left: 30px;
     height: 100%;
-    width: 60px;
+    width: 150px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -485,6 +485,10 @@ video {
     width: 2px;
     background-color: black;
     transition: all 0.2s ease;
+}
+
+.scrubBar:hover > .scrubBarLine {
+    width: 5px;
 }
 
 
