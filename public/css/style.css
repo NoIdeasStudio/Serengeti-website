@@ -155,11 +155,11 @@ nav h2 {
 h1 {
     position: relative;
     display: block;
-    cursor: pointer;
+/*    cursor: pointer;*/
     transform: rotate(-3deg);
 }
 
-h1:before, h1:after {
+/*h1:before, h1:after {
   content: '';
   position: absolute;
   width: 0%;
@@ -175,20 +175,20 @@ h1:before {
 h1:after {
   right: 2.5px;
   background: #000;
-/*  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-*/}
+  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 
 h1:hover:before {
   background: #000;
   width: 100%;
-/*  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-*/}
+  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 
 h1:hover:after {
   background: transparent;
   width: 100%;
   transition: 0s;
-}
+}*/
 
 .option span {
   position: relative;
@@ -201,7 +201,7 @@ h1:hover:after {
   position: absolute;
   width: 0%;
   height: 2px;
-  top: 63%;
+  top: 67%;
   margin-top: -2px;
   background: #000;
 }
@@ -284,9 +284,16 @@ section#about_sec {
     padding: 1%;
 }
 
-#credit {
+#credit,
+#audio {
     top: 0;
     text-align: center;
+}
+
+#audio {
+    z-index: 999;
+    padding: 3% 0;
+    cursor: pointer;
 }
 
 .footnote-right a:hover {
