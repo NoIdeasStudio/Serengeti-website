@@ -1,576 +1,435 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Dennis 6E</title>
-        <meta name="description" content="Dennis 6E.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="./css/style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
-        <script src="./js/howler.js" charset="utf-8"></script>
-        <script src="./js/Detector.js" charset="utf-8"></script>
-        <script src="./js/three.min.js" charset="utf-8"></script>
-        <script src="./js/video.js" charset="utf-8"></script>
-        <script src="./js/pages.js" charset="utf-8"></script>
-        <script src="./js/main.js" charset="utf-8"></script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Dennis 6E</title>
+    <meta name="description" content="Dennis 6E.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <!-- FACEBOOK -->
-        <meta property="og:url"         content="http://dennis6e.com" />
-        <meta property="og:title"       content="Dennis 6E" />
-        <meta property="og:description" content="Serengeti Dennis 6E" />
-        <meta property="og:image"       content="http://dennis6e.com/links/dennis6e-social.jpg" />
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="./js/howler.js" charset="utf-8"></script>
+    <script src="./js/Detector.js" charset="utf-8"></script>
+    <script src="./js/three.min.js" charset="utf-8"></script>
+    <script src="./js/video.js" charset="utf-8"></script>
+    <script src="./js/pages.js" charset="utf-8"></script>
+    <script src="./js/main.js" charset="utf-8"></script>
 
-        <!-- TWITTER -->
-        <meta name="twitter:card"        content="summary">
-        <meta name="twitter:site"        content="@wknyc">
-        <meta name="twitter:url"         content="http://dennis6e.com">
-        <meta name="twitter:title"       content="Dennis 6E">
-        <meta name="twitter:description" content="Serengeti Dennis 6E">
-        <meta name="twitter:image"       content="http://dennis6e.com/links/dennis6e-social.jpg">
+    <!-- FACEBOOK -->
+    <meta property="og:url" content="http://dennis6e.com" />
+    <meta property="og:title" content="Dennis 6E" />
+    <meta property="og:description" content="Serengeti Dennis 6E" />
+    <meta property="og:image" content="http://dennis6e.com/links/dennis6e-social.jpg" />
 
-        <!--  FAVICON -->
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="theme-color" content="#ffffff">
-    </head>
-    <body>
-        <div id="scrubBar" class="scrubBar"><div id="scrubBarLine" class="scrubBarLine"></div></div>
-        <header>
-            <h2 class="navButton" id="home_button">Dennis <span id="six">6</span>E</h2>
-        </header>
-        <main>
-            <section class="hidden" id="home_sec">
-                <div id="song-title" class="song-title">
-                    <h1>not supposed</h1>
-                </div>
-            </section>
-            <section class="hidden" id="tour_sec">
-                <div class="tourCont">
-                    <div class="tour">
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@wknyc">
+    <meta name="twitter:url" content="http://dennis6e.com">
+    <meta name="twitter:title" content="Dennis 6E">
+    <meta name="twitter:description" content="Serengeti Dennis 6E">
+    <meta name="twitter:image" content="http://dennis6e.com/links/dennis6e-social.jpg">
 
-                        <div class="row-item">
-                            <div>
-                                <p>AUG 24</p>
-                            </div>
-                            <div>
-                                <p>Club Kohleausstieg</p>
-                            </div>
-                            <div>
-                                <p>Dortmund(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
+    <!--  FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div id="scrubBar" class="scrubBar">
+        <div id="scrubBarLine" class="scrubBarLine"></div>
+    </div>
+    <header>
+        <h2 class="navButton" id="home_button">Dennis <span id="six">6</span>E</h2>
+    </header>
+    <main>
+        <section class="hidden" id="home_sec">
+            <div id="song-title" class="song-title">
+                <h1>not supposed</h1>
+            </div>
+        </section>
+        <section class="hidden" id="tour_sec">
+            <div class="tourCont">
+                <div class="tour">
+
+                    <div class="row-item">
+                        <div>
+                            <p>AUG 24</p>
                         </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>AUG 25</p>
-                            </div>
-                            <div>
-                                <p>Sonic Ballroom</p>
-                            </div>
-                            <div>
-                                <p>Köln(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
+                        <div>
+                            <p>Club Kohleausstieg</p>
                         </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>AUG 29</p>
-                            </div>
-                            <div>
-                                <p>Gaul</p>
-                            </div>
-                            <div>
-                                <p>Zürich(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
+                        <div>
+                            <p>Dortmund(DE)</p>
                         </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>AUG 31</p>
-                            </div>
-                            <div>
-                                <p>OTR City Festival</p>
-                            </div>
-                            <div>
-                                <p>Hamburg(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
                         </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 1</p>
-                            </div>
-                            <div>
-                                <p>Urban Spree</p>
-                            </div>
-                            <div>
-                                <p>Berlin(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 3</p>
-                            </div>
-                            <div>
-                                <p>KC Kaštan</p>
-                            </div>
-                            <div>
-                                <p>Praha(CZ)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 4</p>
-                            </div>
-                            <div>
-                                <p>HRANIČÁŘ</p>
-                            </div>
-                            <div>
-                                <p>Ústí nad Labem(CZ)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 5</p>
-                            </div>
-                            <div>
-                                <p>Kabinet Múz</p>
-                            </div>
-                            <div>
-                                <p>Brno(CZ)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 6</p>
-                            </div>
-                            <div>
-                                <p>Hopkirk</p>
-                            </div>
-                            <div>
-                                <p>Bratislava(SK)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 7</p>
-                            </div>
-                            <div>
-                                <p>T-KLUB</p>
-                            </div>
-                            <div>
-                                <p>Rožnov pod Radhoštěm(CZ)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 8</p>
-                            </div>
-                            <div>
-                                <p>Bio Lúč</p>
-                            </div>
-                            <div>
-                                <p>Trenčín(SK)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 10</p>
-                            </div>
-                            <div>
-                                <p>Lido</p>
-                            </div>
-                            <div>
-                                <p>Berlin(DE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 11</p>
-                            </div>
-                            <div>
-                                <p>Vega</p>
-                            </div>
-                            <div>
-                                <p>Copenhagen(DK)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 13</p>
-                            </div>
-                            <div>
-                                <p>Paradiso</p>
-                            </div>
-                            <div>
-                                <p>Amsterdam(NL)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 15</p>
-                            </div>
-                            <div>
-                                <p>Electric Ballroom</p>
-                            </div>
-                            <div>
-                                <p>London(UK)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 16</p>
-                            </div>
-                            <div>
-                                <p>Band Academy</p>
-                            </div>
-                            <div>
-                                <p>Manchester(UK)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 17</p>
-                            </div>
-                            <div>
-                                <p>Button Factory</p>
-                            </div>
-                            <div>
-                                <p>Dublin(IE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
-                        <div class="row-item">
-                            <div>
-                                <p>SEPT 19</p>
-                            </div>
-                            <div>
-                                <p>Roisin dubh</p>
-                            </div>
-                            <div>
-                                <p>Galway(IE)</p>
-                            </div>
-                            <div>
-                                <p id="right-align"><a class="option" id="p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>AUG 25</p>
+                        </div>
+                        <div>
+                            <p>Sonic Ballroom</p>
+                        </div>
+                        <div>
+                            <p>Köln(DE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>AUG 29</p>
+                        </div>
+                        <div>
+                            <p>Gaul</p>
+                        </div>
+                        <div>
+                            <p>Zürich(DE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>AUG 31</p>
+                        </div>
+                        <div>
+                            <p>OTR City Festival</p>
+                        </div>
+                        <div>
+                            <p>Hamburg(DE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 1</p>
+                        </div>
+                        <div>
+                            <p>Urban Spree</p>
+                        </div>
+                        <div>
+                            <p>Berlin(DE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 3</p>
+                        </div>
+                        <div>
+                            <p>KC Kaštan</p>
+                        </div>
+                        <div>
+                            <p>Praha(CZ)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 4</p>
+                        </div>
+                        <div>
+                            <p>HRANIČÁŘ</p>
+                        </div>
+                        <div>
+                            <p>Ústí nad Labem(CZ)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 5</p>
+                        </div>
+                        <div>
+                            <p>Kabinet Múz</p>
+                        </div>
+                        <div>
+                            <p>Brno(CZ)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 6</p>
+                        </div>
+                        <div>
+                            <p>Hopkirk</p>
+                        </div>
+                        <div>
+                            <p>Bratislava(SK)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 7</p>
+                        </div>
+                        <div>
+                            <p>T-KLUB</p>
+                        </div>
+                        <div>
+                            <p>Rožnov pod Radhoštěm(CZ)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 8</p>
+                        </div>
+                        <div>
+                            <p>Bio Lúč</p>
+                        </div>
+                        <div>
+                            <p>Trenčín(SK)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 10</p>
+                        </div>
+                        <div>
+                            <p>Lido</p>
+                        </div>
+                        <div>
+                            <p>Berlin(DE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 11</p>
+                        </div>
+                        <div>
+                            <p>Vega</p>
+                        </div>
+                        <div>
+                            <p>Copenhagen(DK)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 13</p>
+                        </div>
+                        <div>
+                            <p>Paradiso</p>
+                        </div>
+                        <div>
+                            <p>Amsterdam(NL)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 15</p>
+                        </div>
+                        <div>
+                            <p>Electric Ballroom</p>
+                        </div>
+                        <div>
+                            <p>London(UK)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 16</p>
+                        </div>
+                        <div>
+                            <p>Band Academy</p>
+                        </div>
+                        <div>
+                            <p>Manchester(UK)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 17</p>
+                        </div>
+                        <div>
+                            <p>Button Factory</p>
+                        </div>
+                        <div>
+                            <p>Dublin(IE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
+                    <div class="row-item">
+                        <div>
+                            <p>SEPT 19</p>
+                        </div>
+                        <div>
+                            <p>Roisin dubh</p>
+                        </div>
+                        <div>
+                            <p>Galway(IE)</p>
+                        </div>
+                        <div>
+                            <p class="right-align"><a class="option p-hover" href="#" target="blank"><span>TICKETS</span></a></p>
+                        </div>
+                    </div>
+
                 </div>
-            </section>
-            <section class="hidden" id="about_sec">
-                  <div class="intro">
-                      <div>
-                          <p>KENNY
-                          <br><br>written by
-                          <br>Ryan Sarnowski and Dave Cohn
-                          <br><br>with ideas from
-                          <br>Wes Tank & Kelly Anderson
-                          <br><br>Based on characters and stories by Dave Cohn</p>
-                      </div>
-                  </div>
-                      <div>
-                      <p>INT. APARTMENT, DULUTH, MN - DAY</p>
-                        <div class="footnote-right">
-                            site by
-                            <br><a href="http://noideas.biz" target="blank">no ideas</a>
-                            <br>with
-                            <br><a href="http://samkilg.us" target="blank">sam kilgus</a>
-                      </div>
-                        <p><br>In a near empty, economy apartment Kenny Dennis (70) sits on the edge of an unmade bed, his back to the camera. He picks up a tape recorder and clicks the record button. Rambling into the recorder he locks onto the phrase: "Don't get jammedup". He repeats it, over and over, rising to his feet, yelling this mantra into his tape recorder.
-
-                      <br><br>BEGIN FLASHBACK:
-
-                      <br><br>EXT. CITY STREET, CHICAGO - DAY
-
-                      <br><br>It’s a gorgeous green early summer day full of sun. A figure stands on the sidewalk talking into a payphone.
-                      <br><br>SUPERIMPOSE: 15 years earlier
-                      <br><br>It’s the classic Kenny Dennis, just younger. Big glasses, even bigger mustache. Blue collar work shirt. Name patch on his chest: “The Deacon”. He’s full of positive energy. He’s talking to his wife Jueles. Kenny asks when Jueles is coming home. He takes down list of things she needs him to pick:
-                      <br>nails, wigs, wheels. Sweetly, he’s tells her he misses her. When she gets back to Chicago he’s gonna make her hot toddies, give her foot massages. A horn honks. A voice calls Kenny back to the beer truck. He says good-bye to Jueles and hangs up.
-                      <br><br>BEGIN MONTAGE:
-                      <br><br>The song “Dennehy” starts to play. Its first line of, “This is for Jueles” is punctuated by a flat of beer hitting the ground.
-                      <br>Kenny hauls beer down the sidewalk. A black, private taxi drives by. The side of the car read: S-CAR-GO. Below that, a slogan: "Join the Slow Ride Movement". CURTIS (55), a large African-American man yells out to Kenny from the driver’s seat. Kenny happily shouts back, “Looking good Curtis”. Kenny takes the beer into a bar. The beer truck drives past a strip club called Roger’s. On the marquee: "Performing tonight, LaTanya". Kenny moving cases of beer down a sidewalk. He passes a salon. MAUREEN (45) a short Asian woman calls to Kenny from a nail salon chair. She yells at Kenny through the glass window. She tells him to pick up chops for the picnic.
-                      
-                      <br><br>2.
-                      <br>Inside a grocery store, Kenny makes a deal with a butcher. They trade a case of beer for some chops. Kenny asks the guy throw in a few brats too. Outside, Kenny stops to take a turn at bat with some kids playing whiffle-ball in an alley. He cracks a homer. Kids cheer Kenny’s name. The horn on the beer truck rings out.
-
-                      </div>
-                  </div>
-              </section>
-            </section>
-        </main>
-        <nav>
-            <div class="nav-item" id="album-popover">
-                <div id="album-cover"><a class="option" href="https://serengetiraps.bigcartel.com" target="blank"><img src="links/album-cover.jpg"></a></div>
-                <h2><a class="option" href="https://serengetiraps.bigcartel.com" target="blank"><span>Pre Order</span></a></h2>
             </div>
-            <div class="nav-item">
-                <h2 class="navButton" id="tour_button"><a class="option"><span>Tour</span></a></h2>
-            </div>
-            <div class="nav-item" id="listen-popover">
-                <div id="listen-options">
-                  <h2><a class="option" href="https://beta.p-e-o-p-l-e.com/artist/serengeti" target="blank"> <span>People</span></a></h2>
-                  <h2><a class="option" href="#" target="blank"> <span>Spotify</span></a></h2>
-                  <h2><a class="option" href="#" target="blank"> <span>Apple</span></a></h2>
+        </section>
+        <section class="hidden" id="about_sec">
+            <div class="intro">
+                <div>
+                    <p>KENNY
+                        <br><br>written by
+                        <br>Ryan Sarnowski and Dave Cohn
+                        <br><br>with ideas from
+                        <br>Wes Tank & Kelly Anderson
+                        <br><br>Based on characters and stories by Dave Cohn</p>
                 </div>
-                <h2><a class="option" href="#"><span>Listen</span></a></h2>
             </div>
-            <div class="nav-item">
-                <h2 class="navButton" id="about_button"><a class="option"><span>About</span></a></h2>
-            </div>
-        </nav>
+            <div>
+                <p>INT. APARTMENT, DULUTH, MN - DAY</p>
+                <div class="footnote-right">
+                    site by
+                    <br><a href="http://noideas.biz" target="blank">no ideas</a>
+                    <br>with
+                    <br><a href="http://samkilg.us" target="blank">sam kilgus</a>
+                </div>
+                <p><br>In a near empty, economy apartment Kenny Dennis (70) sits on the edge of an unmade bed, his back to the camera. He picks up a tape recorder and clicks the record button. Rambling into the recorder he locks onto the phrase: "Don't get
+                    jammedup". He repeats it, over and over, rising to his feet, yelling this mantra into his tape recorder.
 
-        <div class="footnote-right" id="audio">
-          sound on
+                    <br><br>BEGIN FLASHBACK:
+
+                    <br><br>EXT. CITY STREET, CHICAGO - DAY
+
+                    <br><br>It’s a gorgeous green early summer day full of sun. A figure stands on the sidewalk talking into a payphone.
+                    <br><br>SUPERIMPOSE: 15 years earlier
+                    <br><br>It’s the classic Kenny Dennis, just younger. Big glasses, even bigger mustache. Blue collar work shirt. Name patch on his chest: “The Deacon”. He’s full of positive energy. He’s talking to his wife Jueles. Kenny asks when Jueles
+                    is coming home. He takes down list of things she needs him to pick:
+                    <br>nails, wigs, wheels. Sweetly, he’s tells her he misses her. When she gets back to Chicago he’s gonna make her hot toddies, give her foot massages. A horn honks. A voice calls Kenny back to the beer truck. He says good-bye to Jueles
+                    and hangs up.
+                    <br><br>BEGIN MONTAGE:
+                    <br><br>The song “Dennehy” starts to play. Its first line of, “This is for Jueles” is punctuated by a flat of beer hitting the ground.
+                    <br>Kenny hauls beer down the sidewalk. A black, private taxi drives by. The side of the car read: S-CAR-GO. Below that, a slogan: "Join the Slow Ride Movement". CURTIS (55), a large African-American man yells out to Kenny from the
+                    driver’s seat. Kenny happily shouts back, “Looking good Curtis”. Kenny takes the beer into a bar. The beer truck drives past a strip club called Roger’s. On the marquee: "Performing tonight, LaTanya". Kenny moving cases of beer down
+                    a sidewalk. He passes a salon. MAUREEN (45) a short Asian woman calls to Kenny from a nail salon chair. She yells at Kenny through the glass window. She tells him to pick up chops for the picnic.
+
+                    <br><br>2.
+                    <br>Inside a grocery store, Kenny makes a deal with a butcher. They trade a case of beer for some chops. Kenny asks the guy throw in a few brats too. Outside, Kenny stops to take a turn at bat with some kids playing whiffle-ball in
+                    an alley. He cracks a homer. Kids cheer Kenny’s name. The horn on the beer truck rings out.
+                </p>
+            </div>
+        </section>
+    </main>
+    <nav>
+        <div class="nav-item" id="album-popover">
+            <div id="album-cover"><a class="option" href="https://serengetiraps.bigcartel.com" target="blank"><img src="links/album-cover.jpg"></a></div>
+            <h2><a class="option" href="https://serengetiraps.bigcartel.com" target="blank"><span>Pre Order</span></a></h2>
         </div>
+        <div class="nav-item">
+            <h2 class="navButton" id="tour_button"><a class="option"><span>Tour</span></a></h2>
+        </div>
+        <div class="nav-item" id="listen-popover">
+            <div id="listen-options">
+                <h2><a class="option" href="https://beta.p-e-o-p-l-e.com/artist/serengeti" target="blank"> <span>People</span></a></h2>
+                <h2><a class="option" href="#" target="blank"> <span>Spotify</span></a></h2>
+                <h2><a class="option" href="#" target="blank"> <span>Apple</span></a></h2>
+            </div>
+            <h2><a class="option" href="#"><span>Listen</span></a></h2>
+        </div>
+        <div class="nav-item">
+            <h2 class="navButton" id="about_button"><a class="option"><span>About</span></a></h2>
+        </div>
+    </nav>
 
-        <div id="videoCont" class="videoCont"></div>
+    <div class="footnote-right" id="audio">
+        sound on
+    </div>
 
-        <script id="vertexShader" type="x-shader/x-vertex">
-            varying vec2 vUv;
+    <div id="videoCont" class="videoCont"></div>
 
-            void main() {
-                vUv = uv;
-                gl_Position = vec4( position, 1.0 );
-            }
-        </script>
-        <script id="fragmentShader" type="x-shader/x-fragment">
-            uniform vec2 u_resolution;
-            uniform float u_time;
-            uniform sampler2D u_texture;
-            uniform vec2 u_vid_dims;
-            uniform float u_donoise;
+    <script id="vertexShader" type="x-shader/x-vertex">
+        varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4( position, 1.0 ); }
+    </script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform vec2 u_resolution; uniform float u_time; uniform sampler2D u_texture; uniform vec2 u_vid_dims; uniform float u_donoise; varying vec2 vUv; vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); } vec4 permute(vec4 x) { return mod(((x*34.0)+1.0)*x,
+        289.0); } vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; } float snoise2(vec2 v){ const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i = floor(v + dot(v, C.yy) );
+        vec2 x0 = v - i + dot(i, C.xx); vec2 i1; i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+        vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m ; m = m*m ; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314
+        * ( a0*a0 + h*h ); vec3 g; g.x = a0.x * x0.x + h.x * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); } float snoise3(vec3 v){ const vec2 C = vec2(1.0/6.0, 1.0/3.0) ; const vec4 D = vec4(0.0, 0.5, 1.0, 2.0); // First corner
+        vec3 i = floor(v + dot(v, C.yyy) ); vec3 x0 = v - i + dot(i, C.xxx) ; // Other corners vec3 g = step(x0.yzx, x0.xyz); vec3 l = 1.0 - g; vec3 i1 = min( g.xyz, l.zxy ); vec3 i2 = max( g.xyz, l.zxy ); // x0 = x0 - 0. + 0.0 * C vec3 x1 = x0 - i1 +
+        1.0 * C.xxx; vec3 x2 = x0 - i2 + 2.0 * C.xxx; vec3 x3 = x0 - 1. + 3.0 * C.xxx; // Permutations i = mod(i, 289.0 ); vec4 p = permute( permute( permute( i.z + vec4(0.0, i1.z, i2.z, 1.0 )) + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) + i.x + vec4(0.0, i1.x,
+        i2.x, 1.0 )); // Gradients // ( N*N points uniformly over a square, mapped onto an octahedron.) float n_ = 1.0/7.0; // N=7 vec3 ns = n_ * D.wyz - D.xzx; vec4 j = p - 49.0 * floor(p * ns.z *ns.z); // mod(p,N*N) vec4 x_ = floor(j * ns.z); vec4 y_
+        = floor(j - 7.0 * x_ ); // mod(j,N) vec4 x = x_ *ns.x + ns.yyyy; vec4 y = y_ *ns.x + ns.yyyy; vec4 h = 1.0 - abs(x) - abs(y); vec4 b0 = vec4( x.xy, y.xy ); vec4 b1 = vec4( x.zw, y.zw ); vec4 s0 = floor(b0)*2.0 + 1.0; vec4 s1 = floor(b1)*2.0 +
+        1.0; vec4 sh = -step(h, vec4(0.0)); vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ; vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ; vec3 p0 = vec3(a0.xy,h.x); vec3 p1 = vec3(a0.zw,h.y); vec3 p2 = vec3(a1.xy,h.z); vec3 p3 = vec3(a1.zw,h.w); //Normalise gradients vec4
+        norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3))); p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w; // Mix final noise value vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0); m = m
+        * m; return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) ); } float rand(vec2 n) { return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); } float randNoise(vec2 p){ vec2 ip = floor(p); vec2 u = fract(p); u =
+        u*u*(3.0-2.0*u); float res = mix( mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x), mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y); return res*res; } void main() { float scrRatio = u_resolution.x/u_resolution.y; float vidRatio = u_vid_dims.x/u_vid_dims.y;
+        // this assumes we want to fill vertically float horizontalDrawAspect = vidRatio / scrRatio; float verticalDrawAspect = 1.; // does it fill horizontally? if (horizontalDrawAspect > 1.) { // no it does not so scale so we fill horizontally and //
+        adjust vertical to match verticalDrawAspect /= horizontalDrawAspect; horizontalDrawAspect = 1.; } vec2 vPos = vUv; if (horizontalDrawAspect
+        < 1.) vPos.x -=( 1. - horizontalDrawAspect)/2.; else vPos.y -=( 1. - verticalDrawAspect)/2.; vPos.x
+        /=h orizontalDrawAspect; vPos.y /=v erticalDrawAspect; //////////////////////////////////////////////////////////////// /// Noise stuff here //////////////////////////////////////////////////////////////// if (u_donoise> 0.) { if (vPos.y > abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y
+            < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.))))/u_donoise)
+                vPos.y +=u _donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.; if (vPos.y> abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))) && vPos.y
+                < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.))))/u_donoise) vPos.x +=u _donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40.
+                    + randNoise(vec2(vPos.y*700.,u_time*10.))/50.; } //////////////////////////////////////////////////////////////// /// End noise stuff here //////////////////////////////////////////////////////////////// if (vPos.x> 1. || vPos.x
+                    < 0. || vPos.y> 1. || vPos.y
+                        < 0.) gl_FragColor=v ec4(1.,1.,1.,1.); else gl_FragColor=t exture2D(u_texture,vPos); } </script>
+</body>
 
-            varying vec2 vUv;
-
-            vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
-            vec4 permute(vec4 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
-            vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-
-            float snoise2(vec2 v){
-              const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-                       -0.577350269189626, 0.024390243902439);
-              vec2 i  = floor(v + dot(v, C.yy) );
-              vec2 x0 = v -   i + dot(i, C.xx);
-              vec2 i1;
-              i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-              vec4 x12 = x0.xyxy + C.xxzz;
-              x12.xy -= i1;
-              i = mod(i, 289.0);
-              vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-              + i.x + vec3(0.0, i1.x, 1.0 ));
-              vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
-                dot(x12.zw,x12.zw)), 0.0);
-              m = m*m ;
-              m = m*m ;
-              vec3 x = 2.0 * fract(p * C.www) - 1.0;
-              vec3 h = abs(x) - 0.5;
-              vec3 ox = floor(x + 0.5);
-              vec3 a0 = x - ox;
-              m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-              vec3 g;
-              g.x  = a0.x  * x0.x  + h.x  * x0.y;
-              g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-              return 130.0 * dot(m, g);
-            }
-
-            float snoise3(vec3 v){
-              const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
-              const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
-
-            // First corner
-              vec3 i  = floor(v + dot(v, C.yyy) );
-              vec3 x0 =   v - i + dot(i, C.xxx) ;
-
-            // Other corners
-              vec3 g = step(x0.yzx, x0.xyz);
-              vec3 l = 1.0 - g;
-              vec3 i1 = min( g.xyz, l.zxy );
-              vec3 i2 = max( g.xyz, l.zxy );
-
-              //  x0 = x0 - 0. + 0.0 * C
-              vec3 x1 = x0 - i1 + 1.0 * C.xxx;
-              vec3 x2 = x0 - i2 + 2.0 * C.xxx;
-              vec3 x3 = x0 - 1. + 3.0 * C.xxx;
-
-            // Permutations
-              i = mod(i, 289.0 );
-              vec4 p = permute( permute( permute(
-                         i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
-                       + i.y + vec4(0.0, i1.y, i2.y, 1.0 ))
-                       + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
-
-            // Gradients
-            // ( N*N points uniformly over a square, mapped onto an octahedron.)
-              float n_ = 1.0/7.0; // N=7
-              vec3  ns = n_ * D.wyz - D.xzx;
-
-              vec4 j = p - 49.0 * floor(p * ns.z *ns.z);  //  mod(p,N*N)
-
-              vec4 x_ = floor(j * ns.z);
-              vec4 y_ = floor(j - 7.0 * x_ );    // mod(j,N)
-
-              vec4 x = x_ *ns.x + ns.yyyy;
-              vec4 y = y_ *ns.x + ns.yyyy;
-              vec4 h = 1.0 - abs(x) - abs(y);
-
-              vec4 b0 = vec4( x.xy, y.xy );
-              vec4 b1 = vec4( x.zw, y.zw );
-
-              vec4 s0 = floor(b0)*2.0 + 1.0;
-              vec4 s1 = floor(b1)*2.0 + 1.0;
-              vec4 sh = -step(h, vec4(0.0));
-
-              vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
-              vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
-
-              vec3 p0 = vec3(a0.xy,h.x);
-              vec3 p1 = vec3(a0.zw,h.y);
-              vec3 p2 = vec3(a1.xy,h.z);
-              vec3 p3 = vec3(a1.zw,h.w);
-
-            //Normalise gradients
-              vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
-              p0 *= norm.x;
-              p1 *= norm.y;
-              p2 *= norm.z;
-              p3 *= norm.w;
-
-            // Mix final noise value
-              vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
-              m = m * m;
-              return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
-                                            dot(p2,x2), dot(p3,x3) ) );
-            }
-
-            float rand(vec2 n) {
-                return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
-            }
-
-            float randNoise(vec2 p){
-                vec2 ip = floor(p);
-                vec2 u = fract(p);
-                u = u*u*(3.0-2.0*u);
-
-                float res = mix(
-                    mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
-                    mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
-                return res*res;
-            }
-
-            void main() {
-
-                float scrRatio = u_resolution.x/u_resolution.y;
-                float vidRatio = u_vid_dims.x/u_vid_dims.y;
-
-                // this assumes we want to fill vertically
-                float horizontalDrawAspect = vidRatio / scrRatio;
-                float verticalDrawAspect = 1.;
-                // does it fill horizontally?
-                if (horizontalDrawAspect > 1.) {
-                    // no it does not so scale so we fill horizontally and
-                    // adjust vertical to match
-                    verticalDrawAspect /= horizontalDrawAspect;
-                    horizontalDrawAspect = 1.;
-                }
-
-                vec2 vPos = vUv;
-
-                if (horizontalDrawAspect < 1.) vPos.x -= (1. - horizontalDrawAspect)/2.;
-                else vPos.y -= (1. - verticalDrawAspect)/2.;
-
-                vPos.x /= horizontalDrawAspect;
-                vPos.y /= verticalDrawAspect;
-
-
-                ////////////////////////////////////////////////////////////////
-                /// Noise stuff here
-                ////////////////////////////////////////////////////////////////
-
-                if (u_donoise > 0.) {
-                    if (vPos.y > abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * cos((u_time+(rand(vec2(vPos.y,u_time))/100.))/10.))))/u_donoise)
-                        vPos.y += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/15.;
-
-                    if (vPos.y > abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.)))) && vPos.y < 1. - 2.*abs(snoise2(vec2(vPos.y,randNoise(vec2(vPos.y*10.)) * sin(u_time/10.))))/u_donoise)
-                        vPos.x += u_donoise * snoise2(vec2(vPos.y*20.,u_time/10.)) / 40. + randNoise(vec2(vPos.y*700.,u_time*10.))/50.;
-                }
-
-                ////////////////////////////////////////////////////////////////
-                /// End noise stuff here
-                ////////////////////////////////////////////////////////////////
-
-                if (vPos.x > 1. || vPos.x < 0. || vPos.y > 1. || vPos.y < 0.) gl_FragColor = vec4(1.,1.,1.,1.);
-                else gl_FragColor = texture2D(u_texture,vPos);
-            }
-        </script>
-    </body>
 </html>
