@@ -45,7 +45,7 @@ function moveScrubBar() {
     if (!beingMoved) {
         scrubPerc = videoElement.currentTime / videoElement.duration;
     }
-    scrubBarElement.style.left = (scrubPerc*window.innerWidth - (scrubBarElement.clientWidth/2)) + "px";
+    scrubBarElement.style.left = (scrubPerc*(window.innerWidth - scrubBarElement.clientWidth)) + "px";
 }
 
 var beingMovedTimeout;
@@ -135,8 +135,8 @@ function createVideo(srcArray) {
 
 function onWindowResize( event ) {
     renderer.setSize( window.innerWidth, window.innerHeight );
-    uniforms.u_resolution.value.x = window.innerWidth;
-    uniforms.u_resolution.value.y = window.innerHeight;
+    uniforms.u_resolution.value.x = window.innerWidth/window.innerHeight;
+    uniforms.u_resolution.value.y = 1;
 }
 
 function animate() {
@@ -255,6 +255,10 @@ function doneSeeking() {
         rwSound.stop();
         curScrubSound = false;
     }
+    videoElement.play();
+    setTimeout(function () {
+        videoElement.play();
+    }, 10);
 }
 
 function initScrubBar() {
@@ -290,10 +294,12 @@ function handleTogglePlayback(ev) {
     target = getParentByClassName(ev.target,"option");
     if (target) return;
     videoElement.muted = !videoElement.muted;
-    // if (isVideoPlaying()) videoElement.pause();
-    // else {
-    //     videoElement.play();
-    // }
+    if (document.getElementById("audioToggle").classList.contains("crossed")) {
+        document.getElementById("audioToggle").classList.remove("crossed");
+    }
+    else {
+        document.getElementById("audioToggle").classList.add("crossed");
+    }
 }
 
 function initVideo(srcArray) {
@@ -302,7 +308,7 @@ function initVideo(srcArray) {
     createVideo(srcArray);
     initScrubBar();
 
-    window.addEventListener("click",handleTogglePlayback);
+    document.getElementById("audioToggle").addEventListener("click",handleTogglePlayback);
 
     barUpdateInterval = setInterval(moveScrubBar, 10);
 }

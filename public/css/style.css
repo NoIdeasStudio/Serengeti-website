@@ -285,15 +285,50 @@ section#about_sec {
 }
 
 #credit,
-#audio {
+#audioToggle {
     top: 0;
     text-align: center;
 }
 
-#audio {
+#audioToggle {
     z-index: 999;
     padding: 3% 0;
     cursor: pointer;
+}
+
+.crossed span {
+  position: relative;
+  display: inline-block;
+}
+
+.crossed span::after,
+.crossed span::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 67%;
+  margin-top: -2px;
+  background: #000;
+}
+
+.crossed span::before {
+  left: -2.5px;
+}
+
+.crossed span::after {
+  right: 2.5px;
+  background: #000;
+}
+
+.crossed span:before {
+  background: #000;
+  width: 100%;
+}
+
+.crossed span:after {
+  background: transparent;
+  width: 100%;
 }
 
 .footnote-right a:hover {
@@ -464,9 +499,9 @@ video {
 .scrubBar {
     position: fixed;
     top: 0;
-    left: 30px;
+    left: 0;
     height: 100%;
-    width: 150px;
+    width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
