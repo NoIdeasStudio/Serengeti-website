@@ -234,6 +234,8 @@ function handleTouchMove(ev) {
 function handleMouseDown(ev) {
     window.addEventListener("touchmove",handleTouchMove,false);
     window.addEventListener("mousemove",handleMouseMove);
+    videoElement.muted = false;
+    document.getElementById("audioToggle").classList.remove("crossed");
 }
 
 function handleMouseUp(ev) {
@@ -245,7 +247,6 @@ var stopScrubSampleTimeout;
 
 function doneSeeking() {
     beingMoved = false;
-    videoElement.muted = false;
     if (hasWebGL) uniforms.u_donoise.value = 0;
     if (curScrubSound == FF_CODE) {
         ffSound.stop();
