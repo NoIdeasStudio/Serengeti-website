@@ -1,0 +1,37 @@
+[debug] [2018-08-01T15:03:25.903Z] ----------------------------------------------------------------------
+[debug] [2018-08-01T15:03:25.906Z] Command:       /Users/samkilgus/.nvm/versions/node/v10.6.0/bin/node /Users/samkilgus/.nvm/versions/node/v10.6.0/bin/firebase deploy
+[debug] [2018-08-01T15:03:25.906Z] CLI Version:   4.0.1
+[debug] [2018-08-01T15:03:25.906Z] Platform:      darwin
+[debug] [2018-08-01T15:03:25.906Z] Node Version:  v10.6.0
+[debug] [2018-08-01T15:03:25.907Z] Time:          Wed Aug 01 2018 11:03:25 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-08-01T15:03:25.907Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-01T15:03:25.921Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-01T15:03:25.922Z] > authorizing via signed-in user
+[debug] [2018-08-01T15:03:25.923Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-01T15:03:25.923Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/XIas1KnOdNrrHipPdLJnmh7R9Efgjz1r90OmheFIXiY',
+  client_id:
+   '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope:
+   'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Aug 01 2018 11:03:25 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-08-01T15:03:26.495Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-01T15:03:26.532Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/dennis6e-ff410  
+  
+ Wed Aug 01 2018 11:03:26 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-08-01T15:03:26.894Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-01T15:03:26.895Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/dennis6e-ff410/tokens  
+  
+ Wed Aug 01 2018 11:03:26 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-08-01T15:03:27.283Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'dennis6e-ff410'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-08-01T15:03:35.767Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/dennis6e-ff410/uploads/-LIq-yHVzVJsZnkI8B33?fileCount=37&message=  
+  
+ Wed Aug 01 2018 11:03:35 GMT-0400 (Eastern Daylight Time)

@@ -59,6 +59,8 @@ function createVideo(srcArray) {
     video.preload = "auto";
     video.loop = true;
     video.preservepitch = true;
+    video.setAttribute('webkit-playsinline', 'webkit-playsinline');
+    webview.allowsInlineMediaPlayback = true;
 
     for (var i = 0; i < srcArray.length; i++) {
         var srcElement = document.createElement("source");
