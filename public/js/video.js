@@ -53,14 +53,13 @@ var beingMovedTimeout;
 function createVideo(srcArray) {
     var video = document.createElement("video");
 
+    video.muted = true;
     video.autoplay = true;
     video.controls = false;
-    video.muted = true;
     video.preload = "auto";
     video.loop = true;
     video.preservepitch = true;
-    video.setAttribute('webkit-playsinline', 'webkit-playsinline');
-    webview.allowsInlineMediaPlayback = true;
+    enableInlineVideo(video);
 
     for (var i = 0; i < srcArray.length; i++) {
         var srcElement = document.createElement("source");
@@ -258,7 +257,6 @@ function doneSeeking() {
         rwSound.stop();
         curScrubSound = false;
     }
-    videoElement.play();
     setTimeout(function () {
         videoElement.play();
     }, 10);
