@@ -159,37 +159,6 @@ h1 {
     transform: rotate(-3deg);
 }
 
-/*h1:before, h1:after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 3px;
-  top: 65%;
-  margin-top: -0.5px;
-  background: #000;
-}
-
-h1:before {
-  left: -2.5px;
-}
-h1:after {
-  right: 2.5px;
-  background: #000;
-  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-h1:hover:before {
-  background: #000;
-  width: 100%;
-  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-h1:hover:after {
-  background: transparent;
-  width: 100%;
-  transition: 0s;
-}*/
-
 .option span {
   position: relative;
   display: inline-block;
@@ -294,6 +263,7 @@ section#about_sec {
     z-index: 999;
     padding: 3% 0;
     cursor: pointer;
+    position: fixed;
 }
 
 .crossed span {
@@ -306,8 +276,8 @@ section#about_sec {
   content: '';
   position: absolute;
   width: 0%;
-  height: 2px;
-  top: 67%;
+  height: 1px;
+  top: 90%;
   margin-top: -2px;
   background: #000;
 }
@@ -377,6 +347,22 @@ section#about_sec {
     height: auto;
 }
 
+@media only screen and (min-width : 1800px) {
+
+
+    .option span::after,
+    .option span::before {
+        height: 3px;
+    }
+    
+    .crossed span::after,
+    .crossed span::before {
+        height: 2px;
+    }
+
+
+
+}
 
 @media only screen and (max-width : 600px) {
 
@@ -403,7 +389,9 @@ section#about_sec {
 
     nav {
         flex-direction: column;
-        padding: 6%;
+        padding: 0 6% 0;
+        right: 0;
+        width: 65%;
     }
 
     .option span::after,
