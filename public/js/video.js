@@ -84,6 +84,7 @@ function createVideo(srcArray) {
         camera.position.z = 1;
 
         scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0xffffff );
 
         var geometry = new THREE.PlaneBufferGeometry( 3, 3 );
 
