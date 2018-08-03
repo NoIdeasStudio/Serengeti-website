@@ -215,7 +215,7 @@ function scrubHandler(perc) {
 function handleMouseMove(ev) {
     var curX = ev.clientX;
 
-    scrubHandler(curX / window.innerWidth);
+    scrubHandler(Math.max(0,Math.min(1,(curX-(scrubBarElement.offsetWidth/2)) / (window.innerWidth-scrubBarElement.offsetWidth))));
 }
 
 function handleTouchMove(ev) {
