@@ -480,6 +480,7 @@ section#about_sec {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
 }
 
 video {
