@@ -242,11 +242,13 @@ function handleMouseDown(ev) {
     window.addEventListener("mousemove",handleMouseMove);
     videoElement.muted = false;
     document.getElementById("audioToggle").classList.remove("crossed");
+    document.body.classList.add("mouseDown");
 }
 
 function handleMouseUp(ev) {
     window.removeEventListener("touchmove",handleTouchMove,false);
     window.removeEventListener("mousemove",handleMouseMove);
+    document.body.classList.remove("mouseDown");
 }
 
 var stopScrubSampleTimeout;

@@ -38,6 +38,11 @@ html, body {
     width: 100%;
 }
 
+body.mouseDown {
+    cursor: grabbing !important;
+    cursor: -webkit-grabbing !important;
+}
+
 main {
     position: fixed;
     height: 100%;
