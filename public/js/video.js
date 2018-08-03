@@ -74,6 +74,9 @@ function createVideo(srcArray) {
     var nsElement = document.createElement("p");
     nsElement.innerHTML = "Your browser does not support HTML5 video.";
     video.appendChild(nsElement);
+    video.addEventListener('loadeddata', function() {
+       document.getElementById("main").style.backgroundColor = "rgba(255,255,255,0.5)";
+    }, false);
     video.load();
 
     if (hasWebGL) {
