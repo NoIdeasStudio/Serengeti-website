@@ -111,6 +111,7 @@ header {
 #six {
     font: normal 5vw/1 'dennis6e';
     vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
 }
 
 nav {
@@ -143,19 +144,9 @@ nav h2 {
             user-select: none;
 }
 
-/*.song-title h1 {
-    transition: all 5s ease;
-}
-
-.song-title h1:hover {
-    cursor: pointer;
-    transform: scale(1.1) rotate(-1deg);
-}*/
-
 h1 {
     position: relative;
     display: block;
-/*    cursor: pointer;*/
     transform: rotate(-3deg);
 }
 
@@ -362,8 +353,6 @@ section#about_sec {
         height: 2px;
     }
 
-
-
 }
 
 @media only screen and (max-width : 600px) {
@@ -391,7 +380,8 @@ section#about_sec {
 
     nav {
         flex-direction: column;
-        padding: 0 6% 6%;
+        padding: 0 6% 0;
+        margin-bottom: 6%;
         right: 0;
         width: 65%;
     }
