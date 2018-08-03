@@ -354,7 +354,7 @@ section#about_sec {
     .option span::before {
         height: 3px;
     }
-    
+
     .crossed span::after,
     .crossed span::before {
         height: 2px;
