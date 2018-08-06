@@ -246,17 +246,19 @@ section#about_sec {
     padding: 1%;
 }
 
-#credit,
 #audioToggle {
     top: 0;
     text-align: center;
-}
-
-#audioToggle {
     z-index: 999;
     padding: 3% 0;
     cursor: pointer;
     position: fixed;
+}
+
+#credit {
+    top: 0;
+    text-align: center;
+    margin-top: 5%;    
 }
 
 .crossed span {
@@ -296,6 +298,10 @@ section#about_sec {
 
 .footnote-right a:hover {
     border-bottom: 1px solid #000;
+}
+
+#album-popover {
+    max-width: 25%;
 }
 
 #album-cover {
@@ -355,6 +361,12 @@ section#about_sec {
 
 }
 
+@media only screen and (max-width : 1150px) {
+    .footnote-right {
+        font-size: 5vw;
+    }
+}
+
 @media only screen and (max-width : 600px) {
 
     h1 {
@@ -393,6 +405,10 @@ section#about_sec {
 
     #listen-options h2 {
         line-height: .75;
+    }
+
+    #album-popover {
+        min-width: 100%;
     }
 
     #album-cover {
