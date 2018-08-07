@@ -116,6 +116,7 @@ header {
 #six {
     font: normal 5vw/1 'dennis6e';
     vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
 }
 
 nav {
@@ -148,19 +149,9 @@ nav h2 {
             user-select: none;
 }
 
-/*.song-title h1 {
-    transition: all 5s ease;
-}
-
-.song-title h1:hover {
-    cursor: pointer;
-    transform: scale(1.1) rotate(-1deg);
-}*/
-
 h1 {
     position: relative;
     display: block;
-/*    cursor: pointer;*/
     transform: rotate(-3deg);
 }
 
@@ -260,17 +251,19 @@ section#about_sec {
     padding: 1%;
 }
 
-#credit,
 #audioToggle {
     top: 0;
     text-align: center;
-}
-
-#audioToggle {
     z-index: 999;
     padding: 3% 0;
     cursor: pointer;
     position: fixed;
+}
+
+#credit {
+    top: 0;
+    text-align: center;
+    margin-top: 5%;    
 }
 
 .crossed span {
@@ -310,6 +303,10 @@ section#about_sec {
 
 .footnote-right a:hover {
     border-bottom: 1px solid #000;
+}
+
+#album-popover {
+    max-width: 25%;
 }
 
 #album-cover {
@@ -367,8 +364,12 @@ section#about_sec {
         height: 2px;
     }
 
+}
 
-
+@media only screen and (max-width : 1150px) {
+    .footnote-right {
+        font-size: 5vw;
+    }
 }
 
 @media only screen and (max-width : 600px) {
@@ -396,7 +397,8 @@ section#about_sec {
 
     nav {
         flex-direction: column;
-        padding: 0 6% 6%;
+        padding: 0 6% 0;
+        margin-bottom: 6%;
         right: 0;
         width: 65%;
     }
@@ -408,6 +410,10 @@ section#about_sec {
 
     #listen-options h2 {
         line-height: .75;
+    }
+
+    #album-popover {
+        min-width: 100%;
     }
 
     #album-cover {
