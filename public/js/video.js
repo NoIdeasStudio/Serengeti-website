@@ -45,7 +45,7 @@ function moveScrubBar() {
     if (!beingMoved) {
         scrubPerc = videoElement.currentTime / videoElement.duration;
     }
-    scrubBarElement.style.left = (scrubPerc*window.innerWidth - (scrubBarElement.clientWidth/2)) + "px";
+    scrubBarElement.style.left = (scrubPerc*(window.innerWidth - scrubBarElement.clientWidth)) + "px";
 }
 
 var beingMovedTimeout;
@@ -53,12 +53,14 @@ var beingMovedTimeout;
 function createVideo(srcArray) {
     var video = document.createElement("video");
 
+    video.muted = true;
     video.autoplay = true;
     video.controls = false;
-    video.muted = true;
     video.preload = "auto";
     video.loop = true;
     video.preservepitch = true;
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("playsinline", "");
 
     for (var i = 0; i < srcArray.length; i++) {
         var srcElement = document.createElement("source");
@@ -72,6 +74,10 @@ function createVideo(srcArray) {
     var nsElement = document.createElement("p");
     nsElement.innerHTML = "Your browser does not support HTML5 video.";
     video.appendChild(nsElement);
+    video.addEventListener('loadeddata', function() {
+       document.getElementById("main").style.backgroundColor = "rgba(255,255,255,0.5)";
+       document.body.classList.remove("fade");
+    }, false);
     video.load();
 
     if (hasWebGL) {
@@ -82,8 +88,9 @@ function createVideo(srcArray) {
         camera.position.z = 1;
 
         scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0xffffff );
 
-        var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+        var geometry = new THREE.PlaneBufferGeometry( 3, 3 );
 
         videoTexture = new THREE.Texture( video );
         videoTexture.minFilter = THREE.LinearFilter;
@@ -135,8 +142,8 @@ function createVideo(srcArray) {
 
 function onWindowResize( event ) {
     renderer.setSize( window.innerWidth, window.innerHeight );
-    uniforms.u_resolution.value.x = window.innerWidth;
-    uniforms.u_resolution.value.y = window.innerHeight;
+    uniforms.u_resolution.value.x = window.innerWidth/window.innerHeight;
+    uniforms.u_resolution.value.y = 1;
 }
 
 function animate() {
@@ -186,7 +193,7 @@ function scrubHandler(perc) {
         curScrubSound = RW_CODE;
     }
 
-    if (hasWebGL) uniforms.u_donoise.value = Math.abs(scrubAmt) * 10;
+    if (hasWebGL) uniforms.u_donoise.value = Math.abs(scrubAmt) * 50;
 
     beingMoved = true;
     if (curTween) {
@@ -213,7 +220,7 @@ function scrubHandler(perc) {
 function handleMouseMove(ev) {
     var curX = ev.clientX;
 
-    scrubHandler(curX / window.innerWidth);
+    scrubHandler(Math.max(0,Math.min(1,(curX-(scrubBarElement.offsetWidth/2)) / (window.innerWidth-scrubBarElement.offsetWidth))));
 }
 
 function handleTouchMove(ev) {
@@ -234,6 +241,8 @@ function handleTouchMove(ev) {
 function handleMouseDown(ev) {
     window.addEventListener("touchmove",handleTouchMove,false);
     window.addEventListener("mousemove",handleMouseMove);
+    videoElement.muted = false;
+    document.getElementById("audioToggle").classList.remove("crossed");
 }
 
 function handleMouseUp(ev) {
@@ -245,7 +254,6 @@ var stopScrubSampleTimeout;
 
 function doneSeeking() {
     beingMoved = false;
-    videoElement.muted = false;
     if (hasWebGL) uniforms.u_donoise.value = 0;
     if (curScrubSound == FF_CODE) {
         ffSound.stop();
@@ -255,6 +263,9 @@ function doneSeeking() {
         rwSound.stop();
         curScrubSound = false;
     }
+    setTimeout(function () {
+        videoElement.play();
+    }, 10);
 }
 
 function initScrubBar() {
@@ -290,10 +301,12 @@ function handleTogglePlayback(ev) {
     target = getParentByClassName(ev.target,"option");
     if (target) return;
     videoElement.muted = !videoElement.muted;
-    // if (isVideoPlaying()) videoElement.pause();
-    // else {
-    //     videoElement.play();
-    // }
+    if (document.getElementById("audioToggle").classList.contains("crossed")) {
+        document.getElementById("audioToggle").classList.remove("crossed");
+    }
+    else {
+        document.getElementById("audioToggle").classList.add("crossed");
+    }
 }
 
 function initVideo(srcArray) {
@@ -302,7 +315,7 @@ function initVideo(srcArray) {
     createVideo(srcArray);
     initScrubBar();
 
-    window.addEventListener("click",handleTogglePlayback);
+    document.getElementById("audioToggle").addEventListener("click",handleTogglePlayback);
 
     barUpdateInterval = setInterval(moveScrubBar, 10);
 }
