@@ -76,6 +76,7 @@ function createVideo(srcArray) {
     video.appendChild(nsElement);
     video.addEventListener('loadeddata', function() {
        document.getElementById("main").style.backgroundColor = "rgba(255,255,255,0.5)";
+       document.body.classList.remove("fade");
     }, false);
     video.load();
 
@@ -242,13 +243,11 @@ function handleMouseDown(ev) {
     window.addEventListener("mousemove",handleMouseMove);
     videoElement.muted = false;
     document.getElementById("audioToggle").classList.remove("crossed");
-    document.body.classList.add("mouseDown");
 }
 
 function handleMouseUp(ev) {
     window.removeEventListener("touchmove",handleTouchMove,false);
     window.removeEventListener("mousemove",handleMouseMove);
-    document.body.classList.remove("mouseDown");
 }
 
 var stopScrubSampleTimeout;
